@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/defi-staking-app/precache-manifest.ad61c0917cbe871c0d4fad663fce9baa.js"
+  "/eth-todo-list-react/precache-manifest.d79c974ffe56363fa2be55efad63d882.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/defi-staking-app/index.html", {
+workbox.routing.registerNavigationRoute("/eth-todo-list-react/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
