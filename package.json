@@ -1,8 +1,8 @@
 {
-  "homepage": " https://wilhelmmichto.github.io/defi-staking-app/",
-  "name": "defi-staking-app",
+  "homepage": "https://wilhelmmichto.github.io/eth-todo-list-react/",
+  "name": "todo-list-dapp",
   "version": "0.1.0",
-  "description": "DeFi Token Staking App",
+  "description": "Todo List Using React and Solidity",
   "author": "wilhelmmichto",
   "dependencies": {
     "@types/jest": "^26.0.24",
