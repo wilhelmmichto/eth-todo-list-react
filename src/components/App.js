@@ -88,26 +88,48 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow  " style={{color:'yellow' , height:'50px'}}>
-          <div style={{marginLeft:'5px' , fontSize:"20px"}}>Todo List DAPP</div>
-          <div style={{marginRight:'5px', fontSize:"15px"}}>{this.state.account}</div>
+        <nav
+          className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow  "
+          style={{ color: "yellow", height: "50px" }}
+        >
+          <div style={{ marginLeft: "5px", fontSize: "20px" }}>
+            Todo List DAPP
+          </div>
+          <div style={{ marginRight: "5px", fontSize: "15px" }}>
+            {this.state.account}
+          </div>
         </nav>
-        <div className="container-fluid" >
+        <div className="container-fluid">
           <div className="row">
             <main
               role="main"
               className="main col-lg-12 d-flex justify-content-center"
             >
-              {this.state.loading 
-              ? ( <div id="loader" className="text-center"><p className="text-center">Loading...</p></div>) 
-              : ( <TodoLists 
-                tasks={this.state.tasks} 
-                createTask={this.createTask} 
-                toggleCompleted={this.toggleCompleted}/>
+              {this.state.loading ? (
+                <div id="loader" className="text-center">
+                  <p className="text-center">Loading...</p>
+                </div>
+              ) : (
+                <TodoLists
+                  tasks={this.state.tasks}
+                  createTask={this.createTask}
+                  toggleCompleted={this.toggleCompleted}
+                />
               )}
             </main>
           </div>
-          <div className="col-lg-12 d-flex justify-content-center " style={{marginTop:'200px' , border:'solid 1px', borderRadius:'5px'}}><span>Only for testing purposes ... Do not use real ETH </span></div>
+          <div
+            className="col-lg-12 d-flex justify-content-center "
+            style={{
+              marginTop: "200px",
+              display: "inline",
+              alignItems: "center",
+            }}
+          >
+            <span style={{ borderRadius: "5px", border: "solid 1px" }}>
+              &nbsp; Only for testing purposes ... Do not use real ETH &nbsp;
+            </span>
+          </div>
         </div>
       </div>
     );
