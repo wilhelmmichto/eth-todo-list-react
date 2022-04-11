@@ -3,6 +3,7 @@ import "./App.css";
 import Web3 from "web3";
 import TodoList from '../truffle_abis/TodoList.json'
 import TodoLists from "./TodoLists";
+import ClipLoader from "react-spinners/ClipLoader";
 
 class App extends Component {
   async UNSAFE_componentWillMount() {
@@ -79,7 +80,7 @@ class App extends Component {
     })
   }
 
-  
+ 
 
 
 
@@ -92,11 +93,11 @@ class App extends Component {
           className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow  "
           style={{ color: "yellow", height: "50px" }}
         >
-          <div style={{ marginLeft: "5px", fontSize: "20px" }}>
+          <div  style={{ marginLeft: "5px", fontSize: "20px" }}>
             Todo List DAPP
           </div>
           <div style={{ marginRight: "5px", fontSize: "15px" }}>
-            {this.state.account}
+          &nbsp;&nbsp;{this.state.account}
           </div>
         </nav>
         <div className="container-fluid">
@@ -106,8 +107,10 @@ class App extends Component {
               className="main col-lg-12 d-flex justify-content-center"
             >
               {this.state.loading ? (
-                <div id="loader" className="text-center">
-                  <p className="text-center">Loading...</p>
+                <div id="loader" className="text-center " >
+                  <p className="text-center">Loading </p>
+                  <ClipLoader  color={'black'}  size={20} />
+
                 </div>
               ) : (
                 <TodoLists
@@ -121,14 +124,18 @@ class App extends Component {
           <div
             className="col-lg-12 d-flex justify-content-center "
             style={{
-              marginTop: "200px",
-              display: "inline",
+              marginTop: "500px",
+              display: "flex",
               alignItems: "center",
+              fontSize:'20px',
+              textAlign:'center',
+              flexDirection:'column'
             }}
           >
-            <span style={{ borderRadius: "5px", border: "solid 1px" }}>
-              &nbsp; Only for testing purposes ... Do not use real ETH &nbsp;
-            </span>
+            <button style={{ borderRadius: "5px", border: "solid 1px",display:'flex',flexDirection:'column',margin:'10px' }} onClick={() => window.location.reload(false)}>Click to reload after transaction!</button>
+            <div style={{ borderRadius: "5px", border: "solid 1px",display:'flex',flexDirection:'column',margin:'10px', paddingRight:'35px', paddingLeft:'35px' }}>
+              <span> Only for testing purposes</span>  <span> Do not use real ETH</span>
+            </div>
           </div>
         </div>
       </div>

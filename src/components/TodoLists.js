@@ -4,11 +4,11 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div id="content" >
+      <div id="content"  >
         <form onSubmit={(event) => {
           event.preventDefault()
           this.props.createTask(this.task.value)
-        }}>
+        }} style={{display:'flex'}}>
           <input
             id="newTask"
             ref={(input) => {
@@ -17,8 +17,9 @@ class TodoList extends Component {
             type="text"
             className="form-control"
             placeholder="Add task..."
-            required />
-          <input type="submit" hidden={true} />
+            required 
+            style={{marginTop:'20px' , marginLeft:'50px'  }}/>
+          <input type="submit" hidden={false} value='+' style={{marginTop:'20px',paddingLeft:'10px',paddingRight:'10px'}} />
         </form>
         <ul  id="taskList" className="list-unstyled">
           { this.props.tasks.map((task, key) => {
