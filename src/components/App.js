@@ -27,7 +27,8 @@ class App extends Component {
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
     const networkId = await web3.eth.net.getId();
-   
+    this.setState({loading: false})
+
     //Load TODO Contract
     const todoData = TodoList.networks[networkId];
     if (todoData) {
@@ -93,10 +94,10 @@ class App extends Component {
           className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow  "
           style={{ color: "yellow", height: "50px" }}
         >
-          <div  style={{ marginLeft: "5px", fontSize: "20px" }}>
+          <div  style={{ marginLeft: "15px", fontSize: "20px" }}>
             Todo List DAPP
           </div>
-          <div style={{ marginRight: "5px", fontSize: "15px" }}>
+          <div style={{ marginRight: "15px", fontSize: "13px" }}>
           &nbsp;&nbsp;{this.state.account}
           </div>
         </nav>
@@ -124,7 +125,7 @@ class App extends Component {
           <div
             className="col-lg-12 d-flex justify-content-center "
             style={{
-              marginTop: "500px",
+              marginTop: "50px",
               display: "flex",
               alignItems: "center",
               fontSize:'20px',
@@ -133,9 +134,7 @@ class App extends Component {
             }}
           >
             <button style={{ borderRadius: "5px", border: "solid 1px",display:'flex',flexDirection:'column',margin:'10px' }} onClick={() => window.location.reload(false)}>Click to reload after transaction!</button>
-            <div style={{ borderRadius: "5px", border: "solid 1px",display:'flex',flexDirection:'column',margin:'10px', paddingRight:'35px', paddingLeft:'35px' }}>
-              <span> Only for testing purposes</span>  <span> Do not use real ETH</span>
-            </div>
+           
           </div>
         </div>
       </div>
