@@ -45,7 +45,7 @@ class App extends Component {
       }
       this.setState({loading: false})
     } else {
-      window.alert("Todo List not deployed to the network");
+      window.alert("Todo List is deployed to the Ropsten network");
     }
     
   }
