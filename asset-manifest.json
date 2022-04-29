@@ -1,15 +1,15 @@
 {
   "main.css": "/eth-todo-list-react/static/css/main.3ae4307e.chunk.css",
-  "main.js": "/eth-todo-list-react/static/js/main.bb6f4523.chunk.js",
-  "main.js.map": "/eth-todo-list-react/static/js/main.bb6f4523.chunk.js.map",
-  "static/css/1.ddde046b.chunk.css": "/eth-todo-list-react/static/css/1.ddde046b.chunk.css",
-  "static/js/1.6aed96ab.chunk.js": "/eth-todo-list-react/static/js/1.6aed96ab.chunk.js",
-  "static/js/1.6aed96ab.chunk.js.map": "/eth-todo-list-react/static/js/1.6aed96ab.chunk.js.map",
+  "main.js": "/eth-todo-list-react/static/js/main.f2131980.chunk.js",
+  "main.js.map": "/eth-todo-list-react/static/js/main.f2131980.chunk.js.map",
+  "static/css/1.51924ca3.chunk.css": "/eth-todo-list-react/static/css/1.51924ca3.chunk.css",
+  "static/js/1.0e5f372f.chunk.js": "/eth-todo-list-react/static/js/1.0e5f372f.chunk.js",
+  "static/js/1.0e5f372f.chunk.js.map": "/eth-todo-list-react/static/js/1.0e5f372f.chunk.js.map",
   "runtime~main.js": "/eth-todo-list-react/static/js/runtime~main.31078064.js",
   "runtime~main.js.map": "/eth-todo-list-react/static/js/runtime~main.31078064.js.map",
   "static/css/main.3ae4307e.chunk.css.map": "/eth-todo-list-react/static/css/main.3ae4307e.chunk.css.map",
-  "static/css/1.ddde046b.chunk.css.map": "/eth-todo-list-react/static/css/1.ddde046b.chunk.css.map",
+  "static/css/1.51924ca3.chunk.css.map": "/eth-todo-list-react/static/css/1.51924ca3.chunk.css.map",
   "index.html": "/eth-todo-list-react/index.html",
-  "precache-manifest.84ce57dcadf87697520cfcbd91c49ef9.js": "/eth-todo-list-react/precache-manifest.84ce57dcadf87697520cfcbd91c49ef9.js",
+  "precache-manifest.f329511f17bdb45b8b65d44b82f9d8a5.js": "/eth-todo-list-react/precache-manifest.f329511f17bdb45b8b65d44b82f9d8a5.js",
   "service-worker.js": "/eth-todo-list-react/service-worker.js"
 }
