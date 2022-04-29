@@ -1,69 +1,43 @@
-import React, { Component } from "react";
-import "./App.css";
-import Web3 from "web3";
-import TodoList from '../truffle_abis/TodoList.json'
-import TodoLists from "./TodoLists";
-import ClipLoader from "react-spinners/ClipLoader";
+import React, { Component } from 'react'
+import Web3 from 'web3'
+import './App.css'
+import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from '../config'
+import TodoList from './TodoList'
 
 class App extends Component {
-  async UNSAFE_componentWillMount() {
-    await this.loadWeb3();
-    await this.loadBlockchainData();
-  }
-
-  async loadWeb3() {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-      await window.ethereum.enable();
-    } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-    } else {
-      window.alert("No ethereum beowser detected! Check out Metamask!");
-    }
+  componentWillMount() {
+    this.loadBlockchainData()
   }
 
   async loadBlockchainData() {
-    const web3 = window.web3;
-    const accounts = await web3.eth.getAccounts();
-    this.setState({ account: accounts[0] });
-    const networkId = await web3.eth.net.getId();
-    this.setState({loading: false})
-
-    //Load TODO Contract
-    const todoData = TodoList.networks[networkId];
-    if (todoData) {
-      const todoList = new web3.eth.Contract(TodoList.abi, todoData.address);
-      this.setState({ todoList });
-      let taskCount = await todoList.methods.taskCount().call()
-      this.setState({taskCount})
-      console.log(taskCount);
-      for (var i = 1; i <= taskCount; i++) {
-        const task = await todoList.methods.tasks(i).call()
-        this.setState({
-          tasks: [...this.state.tasks, task]
-        })
-      }
-      this.setState({loading: false})
-    } else {
-      window.alert("Todo List is deployed to the Ropsten network");
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
+    const accounts = await web3.eth.getAccounts()
+    this.setState({ account: accounts[0] })
+    const todoList = new web3.eth.Contract(TODO_LIST_ABI, TODO_LIST_ADDRESS)
+    this.setState({ todoList })
+    const taskCount = await todoList.methods.taskCount().call()
+    this.setState({ taskCount })
+    for (var i = 1; i <= taskCount; i++) {
+      const task = await todoList.methods.tasks(i).call()
+      this.setState({
+        tasks: [...this.state.tasks, task]
+      })
     }
-    
+    this.setState({ loading: false })
   }
 
-
-
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      account: "",
+      account: '',
       taskCount: 0,
-      tasks:[],
+      tasks: [],
       loading: true
     }
+
     this.createTask = this.createTask.bind(this)
     this.toggleCompleted = this.toggleCompleted.bind(this)
-
-  };
+  }
 
   createTask(content) {
     this.setState({ loading: true })
@@ -81,65 +55,33 @@ class App extends Component {
     })
   }
 
- 
-
-
-
-
-
   render() {
     return (
-      <div className="app">
-        <nav
-          className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow  "
-          style={{ color: "yellow", height: "50px" }}
-        >
-          <div  style={{ marginLeft: "15px", fontSize: "20px" }}>
-            Todo List DAPP
-          </div>
-          <div style={{ marginRight: "15px", fontSize: "13px" }}>
-          &nbsp;&nbsp;{this.state.account}
-          </div>
+      <div>
+        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">Dapp University | Todo List</a>
+          <ul className="navbar-nav px-3">
+            <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
+              <small><a className="nav-link" href="#"><span id="account"></span></a></small>
+            </li>
+          </ul>
         </nav>
         <div className="container-fluid">
           <div className="row">
-            <main
-              role="main"
-              className="main col-lg-12 d-flex justify-content-center"
-            >
-              {this.state.loading ? (
-                <div id="loader" className="text-center " >
-                  <p className="text-center">Loading </p>
-                  <ClipLoader  color={'black'}  size={20} />
-
-                </div>
-              ) : (
-                <TodoLists
+            <main role="main" className="col-lg-12 d-flex justify-content-center">
+              { this.state.loading
+                ? <div id="loader" className="text-center"><p className="text-center">Loading...</p></div>
+                : <TodoList
                   tasks={this.state.tasks}
                   createTask={this.createTask}
-                  toggleCompleted={this.toggleCompleted}
-                />
-              )}
+                  toggleCompleted={this.toggleCompleted} />
+              }
             </main>
-          </div>
-          <div
-            className="col-lg-12 d-flex justify-content-center "
-            style={{
-              marginTop: "50px",
-              display: "flex",
-              alignItems: "center",
-              fontSize:'20px',
-              textAlign:'center',
-              flexDirection:'column'
-            }}
-          >
-            <button style={{ borderRadius: "5px", border: "solid 1px",display:'flex',flexDirection:'column',margin:'10px' }} onClick={() => window.location.reload(false)}>Click to reload after transaction!</button>
-           
           </div>
         </div>
       </div>
     );
-  };
+  }
 }
 
 export default App;
